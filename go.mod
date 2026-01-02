@@ -1,3 +1,3 @@
-module github.com/kolosys/go-template
+module github.com/kolosys/lumen
 
 go 1.24
