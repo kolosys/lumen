@@ -1,0 +1,13 @@
+name: Lint & Format
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    uses: kolosys/.actions/.github/workflows/go-lint.yml@main
+    permissions: write-all
+    secrets:
+      app_id: ${{ vars.APP_ID }}
+      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}

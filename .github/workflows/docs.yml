@@ -1,0 +1,14 @@
+name: Docs
+on:
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  docs:
+    uses: kolosys/.actions/.github/workflows/go-docs.yml@main
+    permissions: write-all
+    secrets:
+      app_id: ${{ vars.APP_ID }}
+      app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
