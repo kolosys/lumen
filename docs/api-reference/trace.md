@@ -426,7 +426,7 @@ func (*InMemoryExporter) Clear()
 
 
 ```go
-func (*InMemoryExporter) Close() error
+func (*Tracer) Close() error
 ```
 
 **Parameters:**
@@ -616,7 +616,7 @@ type NopExporter struct {
 
 
 ```go
-func (*InMemoryExporter) Close() error
+func (*Tracer) Close() error
 ```
 
 **Parameters:**
@@ -1344,7 +1344,7 @@ type SpanStatus int
 
 
 ```go
-func (SpanStatus) String() string
+func (SpanID) String() string
 ```
 
 **Parameters:**
@@ -1456,7 +1456,7 @@ func (*TraceContext) FormatW3CTraceparent() string
 IsSampled returns whether the trace is sampled.
 
 ```go
-func (*TraceContext) IsSampled() bool
+func (*Span) IsSampled() bool
 ```
 
 **Parameters:**
@@ -1633,7 +1633,7 @@ func New(opts *Options) *Tracer
 Close shuts down the tracer.
 
 ```go
-func (*Tracer) Close() error
+func (*InMemoryExporter) Close() error
 ```
 
 **Parameters:**
