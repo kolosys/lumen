@@ -71,7 +71,7 @@ func NewCounter(name, help string, labelNames ...string) *Counter
 Add increments by the given value.
 
 ```go
-func (*Gauge) Add(delta float64, labelValues ...string)
+func (*Counter) Add(delta float64, labelValues ...string)
 ```
 
 **Parameters:**
@@ -100,7 +100,7 @@ func (*Gauge) Collect() []Sample
 
 
 ```go
-func (*Histogram) Help() string
+func (*Gauge) Help() string
 ```
 
 **Parameters:**
@@ -156,7 +156,7 @@ func (*Gauge) Name() string
 Reset resets all counter values.
 
 ```go
-func (*Counter) Reset()
+func (*Gauge) Reset()
 ```
 
 **Parameters:**
@@ -269,7 +269,7 @@ func NewGauge(name, help string, labelNames ...string) *Gauge
 Add adds a delta.
 
 ```go
-func (*Counter) Add(delta float64, labelValues ...string)
+func (*Gauge) Add(delta float64, labelValues ...string)
 ```
 
 **Parameters:**
@@ -284,7 +284,7 @@ func (*Counter) Add(delta float64, labelValues ...string)
 Collect returns all samples.
 
 ```go
-func (*Histogram) Collect() []Sample
+func (*Gauge) Collect() []Sample
 ```
 
 **Parameters:**
@@ -312,7 +312,7 @@ func (*Gauge) Dec(labelValues ...string)
 
 
 ```go
-func (*Counter) Help() string
+func (*Gauge) Help() string
 ```
 
 **Parameters:**
@@ -354,7 +354,7 @@ func (*Gauge) LabelNames() []string
 
 
 ```go
-func (*Histogram) Name() string
+func (*Gauge) Name() string
 ```
 
 **Parameters:**
@@ -397,7 +397,7 @@ func (*Gauge) Set(value float64, labelValues ...string)
 
 
 ```go
-func (*Gauge) Type() MetricType
+func (*Counter) Type() MetricType
 ```
 
 **Parameters:**
@@ -411,7 +411,7 @@ func (*Gauge) Type() MetricType
 Value returns the current value.
 
 ```go
-func (*Gauge) Value(labelValues ...string) float64
+func (*Counter) Value(labelValues ...string) float64
 ```
 
 **Parameters:**
@@ -465,7 +465,7 @@ func NewHistogram(name, help string, buckets []float64, labelNames ...string) *H
 Collect returns all samples.
 
 ```go
-func (*Histogram) Collect() []Sample
+func (*Gauge) Collect() []Sample
 ```
 
 **Parameters:**
@@ -479,7 +479,7 @@ func (*Histogram) Collect() []Sample
 
 
 ```go
-func (*Counter) Help() string
+func (*Histogram) Help() string
 ```
 
 **Parameters:**
@@ -536,7 +536,7 @@ func (*Histogram) Observe(value float64, labelValues ...string)
 Reset resets all histogram values.
 
 ```go
-func (*Counter) Reset()
+func (*Gauge) Reset()
 ```
 
 **Parameters:**
@@ -926,7 +926,7 @@ func (*Registry) Close() error
 Collect gathers all metric samples.
 
 ```go
-func (*Counter) Collect() []Sample
+func (*Gauge) Collect() []Sample
 ```
 
 **Parameters:**
@@ -972,15 +972,14 @@ func (*Registry) Gauge(name, help string, labelNames ...string) *Gauge
 Get retrieves a metric by name.
 
 ```go
-func (*Registry) Get(name string) (Metric, error)
+func (Labels) Get(key string) string
 ```
 
 **Parameters:**
-- `name` (string)
+- `key` (string)
 
 **Returns:**
-- Metric
-- error
+- string
 
 ### Histogram
 

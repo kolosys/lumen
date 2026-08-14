@@ -1061,7 +1061,7 @@ func (*Span) Events() []Event
 IsSampled returns whether the span is sampled.
 
 ```go
-func (*Span) IsSampled() bool
+func (*TraceContext) IsSampled() bool
 ```
 
 **Parameters:**
@@ -1344,7 +1344,7 @@ type SpanStatus int
 
 
 ```go
-func (SpanID) String() string
+func (SpanStatus) String() string
 ```
 
 **Parameters:**
@@ -1633,7 +1633,7 @@ func New(opts *Options) *Tracer
 Close shuts down the tracer.
 
 ```go
-func (*InMemoryExporter) Close() error
+func (*Tracer) Close() error
 ```
 
 **Parameters:**
